@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<h2>Hyper news</h2>
+<form action="/news/" method="get">
+  <input name="q">
+  <button type="submit">Search</button>
+</form>
+{% for date, some_news in dates_news.items %}
+  <h4>{{ date }}</h4>
+  <ul>
+    {% for news in some_news %}
+      <li><a target="_blank" href="/news/{{ news.link }}/">{{ news.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+<a target="_blank" href="/news/create/">add news</a>
